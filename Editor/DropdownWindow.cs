@@ -62,20 +62,19 @@
             CloseOnEscPress();
             DrawContent();
             RepaintIfMouseWasUsed();
+            // might cause flickering
+            AdjustSizeIfNeeded();
         }
-
+        
         private void Update()
         {
             // Sometimes, Unity resets the window position to 0,0 after showing it as a drop-down, so it is necessary
             // to set it again once the window was created.
-            if (!_positionWasSetAfterCreation)
+            if(!_positionWasSetAfterCreation)
             {
                 _positionWasSetAfterCreation = true;
                 position = _positionOnCreation;
             }
-
-            // If called in OnGUI, the dropdown blinks before appearing for some reason. Thus, it works well only in Update.
-            AdjustSizeIfNeeded();
         }
 
         private void OnLostFocus() => Close();
