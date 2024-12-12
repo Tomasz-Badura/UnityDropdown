@@ -208,7 +208,7 @@
             if (keyDown)
                 Event.current.type = EventType.KeyDown;
 
-            if (GUIHelper.CloseButton(buttonRect))
+            if (GUI.Button(buttonRect, GUIContent.none, DropdownStyle.SearchToolbarStyle))
             {
                 searchText = string.Empty;
                 GUI.FocusControl(null); // Without this, the old text does not disappear for some reason.
